@@ -5,10 +5,12 @@ const section = document.querySelector('section');
 // STEP 3a: Create the asynchronous function populate()
 async function populate(){
     // Introducing JavaScript Object Notation (JSON): https://json.org/
+
     // STEP 4: Store the URL of a JSON file in a variable */
     const requestURL = './js/i-scream.json';
     // STEP 5: Use the new URL to create a new request object
     //const request = new Request(requestURL);
+
     // STEP 6: Make a network request with the fetch() function, which returns a Response object
     const response = await fetch(requestURL);
     
@@ -20,6 +22,7 @@ async function populate(){
     
     // STEP 9a: Invoke the populateHeader function here, then build it below
     populateHeader(iScream);
+
     // STEP 10a: Invoke the showTopFlavors function here, then build it below
     showTopFlavors(iScream);
 }  
@@ -27,10 +30,13 @@ populate();
 
 /* STEP 9b: Build out the populateHeader() function */
 function populateHeader(jsonObj) {
+
     // Create the H1 element
     const headerH1 = document.createElement('h1');
+
     // Grab the company name from the JSON object and use it for the text node
     headerH1.textContent = jsonObj.companyName;
+
     // Inject the complete H1 element into the DOM, inside the HEADER
     header.appendChild(headerH1);
     
@@ -42,8 +48,10 @@ function populateHeader(jsonObj) {
 
 /* STEP 10b: Assemble the showTopFlavors() function */
 function showTopFlavors(jsonObj) {
+
     // STEP 10c: Attache the JSON topFlavors object to a variable
     let topFlavors = jsonObj.topFlavors;
+
     // STEP 10d: Loop through the topFlavors object
     for (let i = 0; i < topFlavors.length; i ++) {
         // STEP 10e: build HTML elements for the content
@@ -83,12 +91,13 @@ function showTopFlavors(jsonObj) {
             ul.appendChild(listItem);
 
         }
+
         // STEP 10h: Append each of the above HTML elements to the ARTICLE element
         article.appendChild(h2);
         article.appendChild(img);
         article.appendChild(ul);
+
         // STEP 10i: Append each complete ARTICLE element to the SECTION element
         section.appendChild(article);
-        
     };
 };
