@@ -55,6 +55,24 @@ function showTopFlavors(jsonObj) {
         // STEP 10f: Set the textContent property for each of the above elements (except the UL), based on the JSON content
         h2.textContent = topFlavors[i].name;
         img.setAttribute('src','./images/' + topFlavors[i].image);
+        img.setAttribute('alt', topFlavors[i].name);
+
+        // Add type paragraph 
+        let pType = document.createElement('p');
+        pType.textContent = `Type: ${topFlavors[i].type}`;
+        article.appendChild(pType);
+
+        // Add calories paragraph to show high or low calories using conditional styling
+        let pCalories = document.createElement('p');
+        pCalories.textContent = `Calories: ${topFlavors[i].calories}`;
+        if (topFlavors[i].calories > 450) {
+            pCalories.style.color = "red";
+            pCalories.textContent += " 🔥 High Calorie!";
+        } else {
+            pCalories.style.color = "green";
+            pCalories.textContent += " ✅ Light Treat!";
+        }
+        article.appendChild(pCalories);
 
         // STEP 10g: Build a loop for the ingredients array in the JSON
         let ingredients = topFlavors[i].ingredients;
@@ -74,10 +92,3 @@ function showTopFlavors(jsonObj) {
         
     };
 };
-// STEP 11: The instructor will edit the JSON file - refresh your page to see the updated content
-
-// STEP 12: Change the URL in STEP 3 to point to the JSON file in the local /js folder in order to prepare for today's lab
-
-// This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON
-
-// A special thanks to https://openclipart.org/detail/285225/ice-cream-cones for the awesome ice cream cone illustrations
