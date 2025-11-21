@@ -13,7 +13,7 @@ async function populate(){
     const response = await fetch(requestURL);
     
     // STEP 7: Capture the returned Response object and covert to a JSON object using json()
-    const iScream = await response.json()
+    const iScream = await response.json();
     
     // STEP 8: Output the iScream JSON object to the console 
     console.log(iScream);
@@ -25,10 +25,6 @@ async function populate(){
 }  
 populate();
 
-
-// STEP 3b: Call the populate() function
-
-
 /* STEP 9b: Build out the populateHeader() function */
 function populateHeader(jsonObj) {
     // Create the H1 element
@@ -38,7 +34,12 @@ function populateHeader(jsonObj) {
     // Inject the complete H1 element into the DOM, inside the HEADER
     header.appendChild(headerH1);
     
-};
+    // Create a P element for the established date and head office location
+    const headerP = document.createElement('p');
+    headerP.textContent = `Established: ${jsonObj.established} | HQ: ${jsonObj.headOffice}`;
+    header.appendChild(headerP);
+}
+
 /* STEP 10b: Assemble the showTopFlavors() function */
 function showTopFlavors(jsonObj) {
     // STEP 10c: Attache the JSON topFlavors object to a variable
