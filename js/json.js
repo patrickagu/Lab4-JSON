@@ -8,9 +8,10 @@ async function populate(){
 
     // STEP 4: Store the URL of a JSON file in a variable */
     const requestURL = 'https://patrickagu.github.io/LAB4-JSON/js/i-scream.json';
-    //const requestURL = './js/i-scream.json';
+    // const requestURL = './js/i-scream.json';               // use this URL for local testing
+    
     // STEP 5: Use the new URL to create a new request object
-    //const request = new Request(requestURL);
+    const request = new Request(requestURL);  
 
     // STEP 6: Make a network request with the fetch() function, which returns a Response object
     const response = await fetch(requestURL);
@@ -63,7 +64,8 @@ function showTopFlavors(jsonObj) {
 
         // STEP 10f: Set the textContent property for each of the above elements (except the UL), based on the JSON content
         h2.textContent = topFlavors[i].name;
-        img.setAttribute('src','./images/' + topFlavors[i].image);
+        // Use full URL for images
+        img.setAttribute('src', 'https://patrickagu.github.io/LAB4-JSON/images/' + topFlavors[i].image);
         img.setAttribute('alt', topFlavors[i].name);
 
         // Add type paragraph 
